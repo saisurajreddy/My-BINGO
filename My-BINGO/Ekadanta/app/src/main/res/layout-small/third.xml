@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:layout_column="0"
+                android:background="@drawable/bingo" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1">
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Instructions"
+                android:id="@+id/button35"
+                android:layout_column="0"
+                android:textColor="#0263b0"
+                android:textSize="20sp"
+                android:background="#bcd1ff"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <ScrollView
+                android:layout_height="133dp"
+                android:layout_width="wrap_content"
+                android:layout_column="0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="dgjhgjhkhkjhkhfkhfhfkshfhskhkffhfkhskehksjehfskfhfhskhskhflkhlkfhslfhfhfksflhfihfsflfhlfhsflsfhshfs;fhs;fsfhfsfrufhrhfirdugy."
+                    android:id="@+id/textView"
+                    android:textSize="17sp"
+                    android:textColor="#0263b0"
+                    android:padding="13sp"/>
+            </ScrollView>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Back"
+                android:id="@+id/back"
+                android:layout_column="0"
+                android:textColor="#0263b0"
+                android:textSize="20sp"
+                android:background="@android:color/transparent"/>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
