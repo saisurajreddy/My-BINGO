@@ -26,6 +26,7 @@ public class Trans extends Activity {
         //cathing the variable
         Intent i=getIntent();
         int temp=i.getIntExtra("var",0);
+        final boolean flag=i.getBooleanExtra("flag",false);
 
         //updating the tv
         if((temp/10)==0) {
@@ -38,6 +39,9 @@ public class Trans extends Activity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("flag",flag);
+                setResult(2,intent);
                 finish();
             }
         });

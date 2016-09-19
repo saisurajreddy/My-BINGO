@@ -28,6 +28,9 @@ public class Second extends Activity {
         if(n==5) {
             Toast t=Toast.makeText(getApplicationContext(),"BINGO", Toast.LENGTH_SHORT);
             t.show();
+            Intent i=new Intent(getApplicationContext(),UserWinFlag.class);
+            startActivity(i);
+            finish();
         }
     }
 
@@ -140,6 +143,23 @@ public class Second extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2) {
+            String message=data.getStringExtra("MESSAGE");
+            boolean flag=data.getBooleanExtra("flag",false);
+            if(flag){
+                Intent i=new Intent(getApplicationContext(),AIWinFlag.class);
+                startActivity(i);
+                announcer_AI();
+                finish();
+            }
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second);
@@ -192,17 +212,18 @@ public class Second extends Activity {
         butGO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean flag=false;
                 int pval=bc.predict(Integer.parseInt((tempButton.getText()).toString()));
+                flag=bc.bingo();
                 Intent it=new Intent(getApplicationContext(),Trans.class);
                 it.putExtra("var",pval);
-                startActivity(it);
+                it.putExtra("flag",flag);
+                //startActivity(it);
+                startActivityForResult(it, 2);
                 button_marker(pval);
                 res();
                 selected_on();
                 butGO.setEnabled(false);
-                if(bc.bingo()){
-                    announcer_AI();
-                }
             }
         });
 

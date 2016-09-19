@@ -35,16 +35,21 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UserWinFlag"
+        <activity android:name=".Chit"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.CustomTranslucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+        <activity android:name=".UserWinFlag"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".AIWinFlag"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.CustomTranslucent">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
