@@ -1,7 +1,10 @@
 package com.example.saisurajreddy.epitome.ekadanta;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 /**
@@ -42,5 +45,30 @@ public class Chit extends Activity {
         ba[4][3]=(Button)findViewById(R.id.button29);
         ba[4][4]=(Button)findViewById(R.id.button30);
         ok=(Button)findViewById(R.id.chitOK);
+
+        //catching variables
+        Intent i=getIntent();
+        final int[] temp=i.getIntArrayExtra("elements");
+        final int[] switches=i.getIntArrayExtra("switches");
+        int index=0;
+
+        //updating buttons text
+        for(int in=0;in<5;in++){
+            for(int jn=0;jn<5;jn++){
+                ba[in][jn].setText(""+temp[index]);
+                if(switches[index]==1){
+                    ba[in][jn].setBackgroundColor(Color.RED);
+                }
+                index++;
+            }
+        }
+
+        //onClickListeners
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

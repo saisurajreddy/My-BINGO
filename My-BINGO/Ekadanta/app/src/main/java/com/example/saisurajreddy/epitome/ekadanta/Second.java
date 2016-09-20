@@ -29,6 +29,8 @@ public class Second extends Activity {
             Toast t=Toast.makeText(getApplicationContext(),"BINGO", Toast.LENGTH_SHORT);
             t.show();
             Intent i=new Intent(getApplicationContext(),UserWinFlag.class);
+            i.putExtra("elements",bc.getElements());
+            i.putExtra("switches",bc.getSwitches());
             startActivity(i);
             finish();
         }
@@ -148,10 +150,11 @@ public class Second extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 2
         if(requestCode==2) {
-            String message=data.getStringExtra("MESSAGE");
             boolean flag=data.getBooleanExtra("flag",false);
             if(flag){
                 Intent i=new Intent(getApplicationContext(),AIWinFlag.class);
+                i.putExtra("elements",bc.getElements());
+                i.putExtra("switches",bc.getSwitches());
                 startActivity(i);
                 announcer_AI();
                 finish();
@@ -222,6 +225,8 @@ public class Second extends Activity {
                 startActivityForResult(it, 2);
                 button_marker(pval);
                 res();
+                bc.printMarkings();
+                bc.printSwitches();
                 selected_on();
                 butGO.setEnabled(false);
             }

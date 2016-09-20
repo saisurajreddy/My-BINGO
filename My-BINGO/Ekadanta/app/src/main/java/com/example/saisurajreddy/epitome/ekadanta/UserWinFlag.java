@@ -20,6 +20,11 @@ public class UserWinFlag extends Activity {
         ok=(Button)findViewById(R.id.uwfOK);
         vc=(Button)findViewById(R.id.uwfVC);
 
+        //catching variables
+        Intent i=getIntent();
+        final int[] temp=i.getIntArrayExtra("elements");
+        final int[] switches=i.getIntArrayExtra("switches");
+
         //onCliclListener
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,7 +35,10 @@ public class UserWinFlag extends Activity {
         vc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i5=new Intent(getApplicationContext(),Chit.class);
+                i5.putExtra("elements",temp);
+                i5.putExtra("switches",switches);
+                startActivity(i5);
             }
         });
     }

@@ -124,6 +124,46 @@ public class Bc {
         }
     }
 
+    public void printSwitches(){
+        System.out.println("aiSwitches");
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                System.out.print(switches[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+
+    public void printMarkings(){
+        System.out.print("ai ");
+        for(int i=0;i<12;i++){
+            System.out.print(markings[i]+" ");
+        }
+        System.out.println("");
+    }
+
+    public int[] getElements(){
+        int[] temp=new int[25];
+        int index=0;
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                temp[index++]=elements[i][j];
+            }
+        }
+        return temp;
+    }
+
+    public int[] getSwitches(){
+        int[] temp=new int[25];
+        int index=0;
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                temp[index++]=switches[i][j];
+            }
+        }
+        return temp;
+    }
+
     public int predict(int n)
     {
         int res,temp,row,column;
