@@ -13,6 +13,15 @@ import android.widget.TextView;
 public class Trans extends Activity {
     Button but;
     TextView tv;
+    boolean mainFlag;
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent();
+        intent.putExtra("flag",mainFlag);
+        setResult(2,intent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,7 @@ public class Trans extends Activity {
         Intent i=getIntent();
         int temp=i.getIntExtra("var",0);
         final boolean flag=i.getBooleanExtra("flag",false);
+        mainFlag=flag;
 
         //updating the tv
         if((temp/10)==0) {
