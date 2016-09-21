@@ -11,12 +11,13 @@ public class Bc {
 
     private Stack<Integer> stack=new Stack<Integer>();
 
+    private boolean tflag=false;
+
     private static int getRandomNumberInRange(int min, int max) {
 
         if (min >= max) {
             throw new IllegalArgumentException("max must be greater than min");
         }
-
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
     }
@@ -80,16 +81,19 @@ public class Bc {
     }
 
     private int resultproducer() {
+        int temp=0;
         if(stack.size()==1) {
-            int temp=stack.pop();
-            stack.clear();
-            return temp;
-        } else {
-            int temp=getRandomNumberInRange(0,stack.size()-1);
+            temp=stack.pop();
+        }else if(stack.size()<1) {
+            tflag=true;
+            System.out.println("outlier");
+            return 0;
+        }else {
+            temp=getRandomNumberInRange(0,stack.size()-1);
             temp=stack.get(temp);
-            stack.clear();
-            return temp;
         }
+        stack.clear();
+        return temp;
     }
 
     private void areafinder(int n,int ofs) {
@@ -167,6 +171,7 @@ public class Bc {
     public int predict(int n)
     {
         int res,temp,row,column;
+        tflag=false;
         ticker(n);
         maxfinder();
         res=resultproducer();
@@ -234,9 +239,33 @@ public class Bc {
             row=4-temp;
             column=temp;
         }
+        if(tflag){
+            row=getMatchRow();
+            column=getMatchColumn(row);
+        }
         switches[row][column]=1;
         marker(row,column);
         return elements[row][column];
+    }
+
+    private int getMatchRow(){
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                if(switches[i][j]==0){
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private int getMatchColumn(int r){
+        for(int i=0;i<5;i++){
+            if(switches[r][i]==0){
+                return i;
+            }
+        }
+        return 0;
     }
 
     public boolean bingo(){
