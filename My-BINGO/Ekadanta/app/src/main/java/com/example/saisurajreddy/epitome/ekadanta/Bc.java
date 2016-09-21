@@ -87,7 +87,7 @@ public class Bc {
         }else if(stack.size()<1) {
             tflag=true;
             System.out.println("outlier");
-            return 0;
+            temp=0;
         }else {
             temp=getRandomNumberInRange(0,stack.size()-1);
             temp=stack.get(temp);
